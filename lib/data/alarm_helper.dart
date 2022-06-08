@@ -141,5 +141,9 @@ class AlarmHelper {
     }
     return alarms;
   }
+  Future<int> delete (int id) async {
+    var db = await database;
+    return await db.delete(tableAlarm,where: '$columnId = ?',whereArgs: [id]);
+  }
 
 }

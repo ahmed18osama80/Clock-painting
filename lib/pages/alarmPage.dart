@@ -140,8 +140,8 @@ class _AlarmPageState extends State<AlarmPage> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text(
+                        children:  [
+                          const Text(
                             '07:00 AM',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -150,10 +150,12 @@ class _AlarmPageState extends State<AlarmPage> {
                               fontSize: 27,
                             ),
                           ),
-                          Icon(
-                            Icons.keyboard_arrow_down,
-                            size: 37,
-                            color: Colors.white,
+                          IconButton(
+                            icon: const Icon(
+                              Icons.delete,
+                              size: 37,
+                              color: Colors.white,
+                            ), onPressed: () { _alarmHelper.delete(alarm.id); },
                           ),
                         ],
                       ),
@@ -161,6 +163,7 @@ class _AlarmPageState extends State<AlarmPage> {
                   ),
                 );
               }).followedBy([
+                if(alarms.length<5)
                 DottedBorder(
                   strokeWidth: 4,
                   color: CustomColors.clockOutline,
